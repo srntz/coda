@@ -12,6 +12,9 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         "coda-blue-100": "#B3D0FF",
+        "coda-blue-200": "#8FBAFF",
+        "coda-blue-300": "#66A1FF",
+        "coda-blue-400": "#4D91FF",
         "coda-blue-500": "#1A72FF",
         "coda-blue-600": "#0052D7"
       },
