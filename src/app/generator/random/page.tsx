@@ -2,12 +2,17 @@
 import { useRef, useState } from "react";
 import AlbumCoverContainer from "@/components/ui/generator/AlbumCoverContainer";
 import { IAlbum } from "@/interfaces/IAlbum";
+import Image from "next/image";
+import GeneratorMultipurposeSection from "@/components/ui/generator/GeneratorMultipurposeSection";
 
 export default function RandomGeneratorPage() {
   const dialog = useRef<HTMLDialogElement>(null);
   const [fetchedData, setFetchedData] = useState<IAlbum[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [currentAlbumIndex, setCurrentAlbumIndex] = useState(0);
 
   async function fetchAlbums() {
+    setLoading(true);
     const resAuth = await fetch("http://localhost:4111/auth", {
       credentials: "include",
     });
@@ -19,6 +24,7 @@ export default function RandomGeneratorPage() {
     const data = await res.json();
 
     setFetchedData((prev) => [...prev, ...data]);
+    setLoading(false);
   }
 
   console.log(fetchedData);
@@ -26,7 +32,7 @@ export default function RandomGeneratorPage() {
   return (
     <div
       id="random-generator-main-content"
-      className="w-full h-full justify-center items-center flex"
+      className="w-full h-full justify-center gap-10 items-center flex"
     >
       <dialog
         ref={dialog}
@@ -38,26 +44,51 @@ export default function RandomGeneratorPage() {
         <button onClick={() => dialog.current.close()}>close</button>
       </dialog>
 
-      <AlbumCoverContainer
-        onClick={() => dialog.current.showModal()}
-        src={fetchedData.length > 0 ? fetchedData[0].images[0].url : ""}
-      />
+      <Image
+        className={`cursor-pointer ${currentAlbumIndex <= 0 && "opacity-25 cursor-default pointer-events-none select-none"}`}
+        width={50}
+        height={50}
+        src={"/chevron_left.svg"}
+        alt={"Right arrow icon"}
+        onClick={() => setCurrentAlbumIndex((prev) => prev - 1)}
+      ></Image>
 
-      <div
-        id="options"
-        className={"h-[28rem] p-10 flex flex-col gap-7 justify-center"}
-      >
-        <p className="text-2xl w-[35rem] leading-normal">
-          There are no options for this type of generator. Just let Coda do its
-          thing.
-        </p>
-        <button
-          onClick={fetchAlbums}
-          className={"bg-coda-blue-300 w-36 h-12 rounded"}
+      <div className={"flex justify-center items-center"}>
+        <AlbumCoverContainer
+          onClick={() => dialog.current.showModal()}
+          src={
+            fetchedData.length > 0
+              ? fetchedData[currentAlbumIndex].images[0].url
+              : ""
+          }
+          loading={loading}
+        />
+
+        <div
+          id="options"
+          className={
+            "h-[28rem] w-[35rem] p-10 flex flex-col gap-7 justify-center"
+          }
         >
-          Generate
-        </button>
+          <GeneratorMultipurposeSection
+            loading={loading}
+            data={
+              fetchedData.length > 0
+                ? fetchedData[currentAlbumIndex]
+                : undefined
+            }
+            fetchCallback={fetchAlbums}
+          />
+        </div>
       </div>
+      <Image
+        className={`cursor-pointer ${currentAlbumIndex >= fetchedData.length - 1 && "opacity-25 cursor-default pointer-events-none select-none"}`}
+        width={50}
+        height={50}
+        src={"/chevron_right.svg"}
+        alt={"Right arrow icon"}
+        onClick={() => setCurrentAlbumIndex((prev) => prev + 1)}
+      ></Image>
     </div>
   );
 }

@@ -20,4 +20,10 @@ export interface IAlbum {
   external_urls: {
     spotify: string;
   };
+  selected_track: {
+    name: string;
+    external_urls: {
+      spotify: string;
+    };
+  };
 }
