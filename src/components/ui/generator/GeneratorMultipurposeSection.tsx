@@ -62,7 +62,9 @@ export default function GeneratorMultipurposeSection({
         </p>
         <button
           onClick={fetchCallback}
-          className={"bg-coda-blue-300 w-36 h-12 rounded"}
+          className={
+            "bg-coda-blue-300 bg-opacity-60 hover:bg-opacity-100 transition w-36 h-12 rounded-lg"
+          }
         >
           Generate
         </button>
