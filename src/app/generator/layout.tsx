@@ -2,6 +2,7 @@
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import NavItem from "@/components/ui/sidebar/NavItem";
+import Link from "next/link";
 
 export default function GeneratorLayout({
   children,
@@ -20,7 +21,14 @@ export default function GeneratorLayout({
         id="sidebar"
         className="h-full w-40 px-4 py-8 bg-coda-black-100 flex flex-col items-center gap-8 rounded-xl"
       >
-        <Image src="/coda_logo.svg" alt={"Coda logo"} width={80} height={80} />
+        <Link href="/">
+          <Image
+            src="/coda_logo.svg"
+            alt={"Coda logo"}
+            width={80}
+            height={80}
+          />
+        </Link>
         <div className="w-full flex flex-col gap-5">
           <NavItem
             title={"Random"}
@@ -35,7 +43,7 @@ export default function GeneratorLayout({
         </div>
       </div>
 
-      <div id="main-content-area" className="p-8">
+      <div id="main-content-area" className="p-8 w-full">
         {children}
       </div>
     </div>

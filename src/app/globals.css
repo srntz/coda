@@ -23,3 +23,8 @@ body {
 .selected-nav-item {
   background-color: #66A1FF;
 }
+
+#generator-info-dialog::backdrop {
+  background-color: black;
+  opacity: 40%;
+}
