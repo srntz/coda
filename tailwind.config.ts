@@ -11,6 +11,7 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        "coda-black-100": "#181818",
         "coda-blue-100": "#B3D0FF",
         "coda-blue-200": "#8FBAFF",
         "coda-blue-300": "#66A1FF",
