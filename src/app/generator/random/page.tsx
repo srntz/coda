@@ -16,7 +16,7 @@ export default function RandomGeneratorPage() {
     setLoading(true);
 
     const data = await fetchRandomAlbums();
-
+    console.log(data);
     setFetchedData((prev) => [...prev, ...data]);
     setLoading(false);
   }
@@ -96,7 +96,7 @@ export default function RandomGeneratorPage() {
         <div
           id="options"
           className={
-            "h-[28rem] w-[35rem] p-10 flex flex-col gap-7 justify-center"
+            "h-[28rem] w-[35rem] px-10 py-1 flex flex-col gap-7 justify-center"
           }
         >
           <GeneratorMultipurposeSection
@@ -107,6 +107,11 @@ export default function RandomGeneratorPage() {
                 : undefined
             }
             fetchCallback={handleGenerateAlbums}
+            iframeUrl={
+              fetchedData.length > 0
+                ? fetchedData[currentAlbumIndex].iframe_url
+                : ""
+            }
           />
         </div>
       </div>

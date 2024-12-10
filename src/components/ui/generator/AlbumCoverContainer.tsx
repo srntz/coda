@@ -22,7 +22,7 @@ export default function AlbumCoverContainer({
           <div
             id={"album-cover-placeholder"}
             className={
-              "h-[32rem] w-[32rem] transition-all hover:w-[33rem] hover:h-[33rem] flex justify-center items-center rounded-3xl bg-coda-black-100"
+              "h-[32rem] w-[32rem] transition-all hover:w-[33rem] hover:h-[33rem] flex justify-center items-center rounded-3xl bg-coda-black-100 cursor-pointer"
             }
           >
             <label className="opacity-85 text-center">

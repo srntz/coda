@@ -26,4 +26,5 @@ export interface IAlbum {
       spotify: string;
     };
   };
+  iframe_url: string;
 }
