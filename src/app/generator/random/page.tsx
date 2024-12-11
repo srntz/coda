@@ -73,7 +73,7 @@ export default function RandomGeneratorPage() {
 
       {fetchedData.length > 0 && (
         <Image
-          className={`cursor-pointer select-none ${currentAlbumIndex <= 0 || (loading && "opacity-25 cursor-default pointer-events-none")}`}
+          className={`cursor-pointer select-none ${(currentAlbumIndex <= 0 || loading) && "opacity-25 cursor-default pointer-events-none"}`}
           width={50}
           height={50}
           src={"/chevron_left.svg"}
