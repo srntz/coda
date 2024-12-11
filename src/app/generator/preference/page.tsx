@@ -1,11 +1,7 @@
 "use client";
-import AlbumCoverContainer from "@/components/ui/generator/AlbumCoverContainer";
-import Image from "next/image";
-import { useRef } from "react";
 import Circle from "@/components/ui/Circle";
 
 export default function PreferenceGeneratorPage() {
-  const dialog = useRef<HTMLDialogElement>(null);
   return (
     <div
       id="preference-generator-main-content"
@@ -46,29 +42,6 @@ export default function PreferenceGeneratorPage() {
           Stay tuned.
         </p>
       </div>
-      {/*<dialog*/}
-      {/*  ref={dialog}*/}
-      {/*  id="generator-info-dialog"*/}
-      {/*  className={"w-[25rem] p-4 bg-coda-black-200 text-white rounded-lg"}*/}
-      {/*>*/}
-      {/*  <div className={"w-full h-6 flex justify-end"}>*/}
-      {/*    <Image*/}
-      {/*      className={`cursor-pointer select-none`}*/}
-      {/*      width={20}*/}
-      {/*      height={20}*/}
-      {/*      src={"/close_icon.svg"}*/}
-      {/*      alt={"Cross icon"}*/}
-      {/*      onClick={() => (dialog.current as HTMLDialogElement).close()}*/}
-      {/*    ></Image>*/}
-      {/*  </div>*/}
-      {/*  <p className={"text-sm leading-[1.5rem] opacity-90"}>*/}
-      {/*    This generator recommends albums based on the given list of albums.*/}
-      {/*    You can add up to 15 albums to the list, but the generator*/}
-      {/*  </p>*/}
-      {/*</dialog>*/}
-      {/*<AlbumCoverContainer*/}
-      {/*  onClick={() => (dialog.current as HTMLDialogElement).showModal()}*/}
-      {/*/>*/}
     </div>
   );
 }
